@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forgot Password</title>
+  <link rel="stylesheet" href="style1.css">
+  <style>
+    body {
+        background-image: url('https://images.pexels.com/photos/1500459/pexels-photo-1500459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0;
+        padding: 0;
+    }
+</style>
+</head>
+<body>
+  <form id="forgotPasswordForm">
+   <center> <h4>Forgot Password</h4></center>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <button type="button" onclick="sendOTP()">Send OTP</button>
+
+    <div id="otpSection" style="display: none;">
+      <label for="otp">Enter OTP:</label>
+      <input type="text" id="otp" name="otp" required>
+
+      <label for="newPassword">New Password:</label>
+      <input type="password" id="newPassword" name="newPassword" required>
+
+      <button type="button" onclick="resetPassword()">Reset Password</button>
+    </div>
+  </form>
+
+  <script>
+    function sendOTP() {
+      const email = document.getElementById('email').value;
+
+      if (email) {
+        // Send email to the server for OTP generation and delivery
+        fetch('/sendOTP', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email }),
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data);
+          document.getElementById('otpSection').style.display = 'block';
+        })
+        .catch(error => console.error('Error:', error));
+      } else {
+        alert('Please enter your email');
+      }
+    }
+
+    function resetPassword() {
+      const email = document.getElementById('email').value;
+      const otp = document.getElementById('otp').value;
+      const newPassword = document.getElementById('newPassword').value;
+
+      if (otp && newPassword) {
+        // Send OTP and new password to the server for verification
+        fetch('/resetPassword', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ email, otp, newPassword }),
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data);
+          // Redirect or perform any other action after successful password reset
+        })
+        .catch(error => console.error('Error:', error));
+      } else {
+        alert('Please enter OTP and new password');
+      }
+    }
+  </script>
+</body>
+</html>

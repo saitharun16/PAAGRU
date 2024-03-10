@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Paagru - Sign Up</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: darkgreen;
+            background-image: url('https://images.pexels.com/photos/1500459/pexels-photo-1500459.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 300px;
+            padding: 16px;
+            background-color: white;
+            margin: 0 auto;
+            margin-top: 100px;
+            border: 1px solid darkgreen;
+            border-radius: 4px;
+            background-color: lightgray;
+        }
+        input[type=text], input[type=password] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid darkgreen;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: darkgreen;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            opacity: 0.8;
+        }
+        a {
+            color: darkgreen;
+        }
+        .fa {
+            margin-right: 10px;
+        }
+        img {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png" width="150px" height="150px"> 
+        <label for="uname"><b>Username</b></label>
+        <input type="text" placeholder="Enter Username" name="uname" required>
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+        <a href="forget.html">Forgot password?</a>
+        <a href="home.html">
+            <button type="submit">Sign In</button>
+
+        </a>
+        
+
+        <hr>
+        <a href="signup.html">
+        <button type="button"><i class="fa fa-google"></i>Sign Up</button>
+    </a>
+    </div>
+</body>
+</html>
